@@ -25,7 +25,7 @@ public:
 
 int main() {
     // noMemoryLeak();
-    FileManager fm("main.cpp"); // пример файла
+    FileManager fm("/Users/darasatalova/Downloads/lab_3-main/manual_leak.cpp");
     fm.read();
     return 0;
 }
