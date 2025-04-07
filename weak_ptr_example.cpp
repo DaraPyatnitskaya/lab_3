@@ -4,9 +4,9 @@
 class Observer {
 public:
     void observe(std::weak_ptr<int> wp) {
-        if (auto sp = wp.lock()) {
+        if (auto sp = wp.lock()) { // Преобразуем weak_ptr в shared_ptr
             std::cout << "Observed value: " << *sp << "\n";
-        } else {
+        } else { //если не существует, то выбрасывает nullptr
             std::cout << "Object no longer exists\n";
         }
     }
@@ -18,9 +18,7 @@ int main() {
 
     Observer o;
     o.observe(wp);  // Должен увидеть значение
-
     sp.reset();  // Уничтожение объекта
-
     o.observe(wp);  // Больше не существует
     return 0;
 }
